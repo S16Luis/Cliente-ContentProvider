@@ -19,13 +19,13 @@
                 android:icon="@drawable/ic_buscar"
                 android:title="Buscar"></item>
             <item
-                android:id="@+id/eliminar"
-                android:icon="@drawable/ic_eliminar"
-                android:title="Eliminar"></item>
-            <item
                 android:id="@+id/editar"
                 android:icon="@drawable/ic_editar"
                 android:title="Editar"></item>
+            <item
+                android:id="@+id/eliminar"
+                android:icon="@drawable/ic_eliminar"
+                android:title="Eliminar"></item>
         </menu>
     </item>
 </menu>

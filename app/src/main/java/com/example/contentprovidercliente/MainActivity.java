@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationView;
 
 import Fragments.ContactosFragment;
+import Fragments.EditarFragment;
 import Fragments.InsertarFragmet;
 import Fragments.MainFragment;
 
@@ -75,6 +76,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container,new InsertarFragmet());
+            fragmentTransaction.commit();
+        }
+        if(item.getItemId()==R.id.buscar || item.getItemId()==R.id.editar || item.getItemId()==R.id.eliminar)
+        {
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container,new EditarFragment());
             fragmentTransaction.commit();
         }
         return false;
