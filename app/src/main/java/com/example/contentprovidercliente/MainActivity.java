@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationView;
 
 import Fragments.ContactosFragment;
+import Fragments.InsertarFragmet;
 import Fragments.MainFragment;
 
 import static com.example.contentprovidercliente.R.id.container;
@@ -50,23 +51,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.container,new MainFragment());
         fragmentTransaction.commit();
-
-
-
-        /*Cursor c = getContentResolver().query(com.example.contentprovidercliente.MiProveedorContenidoContract.Usuarios.CONTENT_URI,null,null,null,null);
-        while(c.moveToNext())
-        {
-            Log.d("MiCPU",c.getInt(0)+"-"+c.getString(2));
-        }
-
-        ContentValues cv = new ContentValues();
-        cv.put(MiProveedorContenidoContract.Usuarios.NOMBRE,"José Luis");
-        cv.put(MiProveedorContenidoContract.Usuarios.PASS,"123");
-        cv.put(MiProveedorContenidoContract.Usuarios.EMAIL,"jos@fasdf");
-        cv.put(MiProveedorContenidoContract.Usuarios.TELEFONO,"54543");
-
-        Uri uri= getContentResolver().insert(MiProveedorContenidoContract.Usuarios.CONTENT_URI,cv);
-        Log.d("MiCPU",uri.toString());*/
     }
 
     @Override
@@ -84,6 +68,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container,new ContactosFragment());
+            fragmentTransaction.commit();
+        }
+        if(item.getItemId()==R.id.agregar)
+        {
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container,new InsertarFragmet());
             fragmentTransaction.commit();
         }
         return false;
