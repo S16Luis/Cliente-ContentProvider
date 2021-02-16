@@ -35,7 +35,7 @@ public class EditarFragment extends Fragment {
         txttelefono = view.findViewById(R.id.txtTel);
         btnbuscar = view.findViewById(R.id.btnbuscar);
         btneditar = view.findViewById(R.id.btnEditar);
-        btneliminar = view.findViewById(R.id.btnEditar);
+        btneliminar = view.findViewById(R.id.btnEliminar);
         btnbuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,6 +48,41 @@ public class EditarFragment extends Fragment {
                     txtpassword.setText(c.getString(3));
                     txttelefono.setText(c.getString(4));
                 }
+            }
+        });
+        btneditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String id = txtbuscar.getText().toString();
+                String nombre = txtnombre.getText().toString();
+                String password = txtpassword.getText().toString();
+                String email = txtemail.getText().toString();
+                String telefono = txttelefono.getText().toString();
+                ContentValues cv = new ContentValues();
+                cv.put(MiProveedorContenidoContract.Usuarios.NOMBRE,nombre);
+                cv.put(MiProveedorContenidoContract.Usuarios.PASS,password);
+                cv.put(MiProveedorContenidoContract.Usuarios.EMAIL,email);
+                cv.put(MiProveedorContenidoContract.Usuarios.TELEFONO,telefono);
+                getContext().getContentResolver().update(Uri.parse(MiProveedorContenidoContract.Usuarios.CONTENT_URI+id),cv,null,null);
+                Toast.makeText(getContext(), "Contacto Editado", Toast.LENGTH_SHORT).show();
+                txtbuscar.setText("");
+                txtnombre.setText("");
+                txtpassword.setText("");
+                txtemail.setText("");
+                txttelefono.setText("");
+            }
+        });
+        btneliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String id = txtbuscar.getText().toString();
+                getContext().getContentResolver().delete(Uri.parse(MiProveedorContenidoContract.Usuarios.CONTENT_URI+id), null, null);
+                Toast.makeText(getContext(), "Contacto Eliminado", Toast.LENGTH_SHORT).show();
+                txtbuscar.setText("");
+                txtnombre.setText("");
+                txtpassword.setText("");
+                txtemail.setText("");
+                txttelefono.setText("");
             }
         });
 
