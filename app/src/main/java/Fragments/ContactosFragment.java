@@ -40,7 +40,7 @@ public class ContactosFragment extends Fragment {
         Cursor c = getContext().getContentResolver().query(com.example.contentprovidercliente.MiProveedorContenidoContract.Usuarios.CONTENT_URI,null,null,null,null);
         while(c.moveToNext())
         {
-           lista.add(new Contacto(c.getString(0),c.getString(1),c.getString(2),c.getString(3),c.getString(4)));
+           lista.add(new Contacto(c.getString(0),c.getString(1),c.getString(3),c.getString(4),c.getString(2)));
         }
     }
 
